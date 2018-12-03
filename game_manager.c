@@ -9,36 +9,20 @@
 #include <unistd.h>
 #include "my_sokoban.h"
 
-void display_map(char **map)
+void run_game(char **map)
 {
-    for (int i = 0; i < 8; i++) {
-        write(1, map[i], 10);
-    }
-}
-
-void run_game(char const *filepath)
-{
-    char **map;
-
-    map = load_map(filepath);
-    display_map(map);
-    /*
-    WINDOW *win;
-    int end_game = 0;
-    position_t pos;
     int input = 0;
-    char *buffer = load_map(filepath);
+    int i = 0;
+    object_t *player = create_object(map);
 
-    initscr();
-    attron(A_NORMAL);
+    init_screen();
     while (input != ' ') {
-        refresh();
-        clear();
-        mvprintw(LINES / 2, COLS / 2, buffer);        
+        i++;
+        for (int i = 0; i < 10; i++)
+            mvprintw(LINES / 2 - 5 + i, COLS / 2 - 5, map[i]);
         input = getch();
-        end_game = 1;
+        check_inputs(input, map, player);            
+        refresh();
     }
-    clear();
-    endwin();
-    */
+    end_screen();
 }

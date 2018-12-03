@@ -9,10 +9,13 @@
 
 int main (int ac, char **av)
 {
+    char **map = NULL;
+
     if (ac != 2) {
-        write(1, "Enter a valid number of arguments\n", 34);
+        write(1, "Invalid number of arguments\n", 28);
         return (84);
     }
-    //load_map(av[1]);
-    run_game(av[1]);   
+    map = load_map(av[1]);
+    run_game(map);
+    free_map(map);   
 }

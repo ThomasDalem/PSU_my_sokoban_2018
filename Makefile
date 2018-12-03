@@ -5,8 +5,12 @@
 ## Makefile
 ##
 
-SRC		=		main.c			\
-				game_manager.c	\
+SRC		=		main.c				\
+				game_manager.c		\
+				manage_inputs.c		\
+				free_map.c			\
+				screen_functions.c	\
+				object_t_functions.c\
 				map_loader.c
 
 NAME	=		my_sokokan
@@ -14,7 +18,7 @@ NAME	=		my_sokokan
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) -Iinclude -lncurses
+	gcc -o $(NAME) $(SRC) -g -Iinclude -lncurses
 	rm -f $(OBJ)
 
 clean:
