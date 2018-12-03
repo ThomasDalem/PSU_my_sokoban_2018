@@ -14,15 +14,28 @@ typedef struct position_s {
 } position_t;
 
 typedef struct object_s {
+    int type;
     position_t pos;
 } object_t;
 
-void run_game(char **map);
-char **load_map(char const *filepath);
-void check_inputs(int input, char **map, object_t *player);
-void free_map(char **map);
+typedef struct map_s {
+    char **map;
+    object_t **objects;
+    int nb_objects;
+    int size_x;
+    int size_y;
+} map_t;
+
+int my_strlen(char const *str);
+void run_game(map_t *map);
+void load_map(char const *filepath, map_t *map);
+void check_inputs(int input, map_t *map, object_t *player);
+void free_map(map_t *map);
 void init_screen(void);
 void end_screen(void);
-object_t *create_object(char **map);
+object_t *create_object(int type, position_t pos);
+object_t *create_player(map_t *map, int type);
+void change_player_pos(object_t *player, map_t *map, position_t dir);
+int move_boxes(object_t *player, map_t *map, position_t dir);
 
 #endif

@@ -7,13 +7,18 @@
 #include <stdlib.h>
 #include "my_sokoban.h"
 
-void free_map(char **map)
+void free_map(map_t *map)
 {
     int i = 0;
+    int y = 0;
 
-    while (i < 10) {
-        free(map[i]);
+    while (i < map->size_y) {
+        free(map->map[i]);
         i++;
     }
+    //while (y < map->nb_objects) {
+    //    free(map->objects[y]);
+    //}
+    free(map->objects);
     free(map);
 }

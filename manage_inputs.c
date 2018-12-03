@@ -9,48 +9,46 @@
 #include <unistd.h>
 #include "my_sokoban.h"
 
-void move_vertical(char **map, object_t *player, int input)
+void move_vertical(map_t *map, object_t *player, int input)
 {
+    position_t dir;
+
     if (input == KEY_UP) {
-        if (map[player->pos.y - 1][player->pos.x] != '#') {
-            map[player->pos.y - 1][player->pos.x] = 'P';
-            map[player->pos.y][player->pos.x] = ' ';
-            player->pos.y--;
-        }
+        dir.x = 0;
+        dir.y = -1;
+        if (move_boxes(player, map, dir) != -1)
+        change_player_pos(player, map, dir);
     }
     if (input == KEY_DOWN) {
-        if (map[player->pos.y + 1][player->pos.x] != '#') {
-            map[player->pos.y + 1][player->pos.x] = 'P';
-            map[player->pos.y][player->pos.x] = ' ';
-            player->pos.y++;
-        }
+        dir.x = 0;
+        dir.y = 1;
+        if (move_boxes(player, map, dir) != -1)
+        change_player_pos(player, map, dir);
     }
 }
 
-void move_horizontal(char **map, object_t *player, int input)
+void move_horizontal(map_t *map, object_t *player, int input)
 {
+    position_t dir;
+
     if (input == KEY_LEFT) {
-        if (map[player->pos.y][player->pos.x - 1] != '#') {
-            map[player->pos.y][player->pos.x - 1] = 'P';
-            map[player->pos.y][player->pos.x] = ' ';
-            player->pos.x--;
-        }
+        dir.x = -1;
+        dir.y = 0;
+        if (move_boxes(player, map, dir) != -1)
+        change_player_pos(player, map, dir);
     }
     if (input == KEY_RIGHT) {
-        if (map[player->pos.y][player->pos.x + 1] != '#') {
-            map[player->pos.y][player->pos.x + 1] = 'P';
-            map[player->pos.y][player->pos.x] = ' ';
-            player->pos.x++;
-        }
+        dir.x = 1;
+        dir.y = 0;
+        if (move_boxes(player, map, dir) != -1)
+        change_player_pos(player, map, dir);
     }
 }
 
-void check_inputs(int input, char **map, object_t *player)
+void check_inputs(int input, map_t *map, object_t *player)
 {
-    if (input == KEY_UP || input == KEY_DOWN) {
+    if (input == KEY_UP || input == KEY_DOWN)
         move_vertical(map, player, input);
-    }
-    else if (input == KEY_LEFT || input == KEY_RIGHT) {
+    else if (input == KEY_LEFT || input == KEY_RIGHT)
         move_horizontal(map, player, input);
-    }
 }

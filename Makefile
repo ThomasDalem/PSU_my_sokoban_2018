@@ -11,6 +11,9 @@ SRC		=		main.c				\
 				free_map.c			\
 				screen_functions.c	\
 				object_t_functions.c\
+				my_strlen.c			\
+				display_player.c	\
+				box_movement.c		\
 				map_loader.c
 
 NAME	=		my_sokokan
