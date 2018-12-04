@@ -28,9 +28,9 @@ typedef struct map_s {
 } map_t;
 
 int my_strlen(char const *str);
-int run_game(map_t *map);
+int run_game(map_t *map, int *restart);
 void load_map(char const *filepath, map_t *map);
-void check_inputs(int input, map_t *map, object_t *player);
+void check_inputs(int input, map_t *map, object_t *player, int *restart);
 void free_map(map_t *map);
 void init_screen(void);
 void end_screen(void);

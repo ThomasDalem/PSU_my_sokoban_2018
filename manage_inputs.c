@@ -45,10 +45,12 @@ void move_horizontal(map_t *map, object_t *player, int input)
     }
 }
 
-void check_inputs(int input, map_t *map, object_t *player)
+void check_inputs(int input, map_t *map, object_t *player, int *restart)
 {
     if (input == KEY_UP || input == KEY_DOWN)
         move_vertical(map, player, input);
     else if (input == KEY_LEFT || input == KEY_RIGHT)
         move_horizontal(map, player, input);
+    if (input == ' ')
+        *restart = 1;
 }
