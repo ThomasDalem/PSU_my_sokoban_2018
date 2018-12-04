@@ -15,12 +15,14 @@ int main (int ac, char **av)
     map->nb_goals = 0;
     map->boxes = malloc(sizeof(object_t *) * 30);
     map->goals = malloc(sizeof(object_t *) * 30);
+    int has_won = 0;
 
     if (ac != 2) {
         write(1, "Invalid number of arguments\n", 28);
         return (84);
     }
     load_map(av[1], map);
-    run_game(map);
-    free_map(map);   
+    has_won = run_game(map);
+    free_map(map);
+    return (0);
 }

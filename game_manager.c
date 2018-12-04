@@ -9,13 +9,13 @@
 #include <unistd.h>
 #include "my_sokoban.h"
 
-void run_game(map_t *map)
+int run_game(map_t *map)
 {
     int input = 0;
     object_t *player = create_player(map, 1);
     int pos_x = map->size_x;
     int pos_y = map->size_y;
-    int has_won = 0;
+    int has_won = -1;
 
     init_screen();
     while (input != ' ' && has_won != 1) {
@@ -25,8 +25,10 @@ void run_game(map_t *map)
         printw("X pos x = %d", map->boxes[0]->pos.x);
         input = getch();
         check_inputs(input, map, player);
+        display_goals(map, player);
         has_won = check_if_won(map);
         refresh();
     }
     end_screen();
+    return (has_won);
 }

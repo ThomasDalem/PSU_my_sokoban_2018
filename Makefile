@@ -14,6 +14,7 @@ SRC		=		main.c				\
 				my_strlen.c			\
 				display_player.c	\
 				box_movement.c		\
+				display_goals.c		\
 				check_if_won.c 		\
 				map_loader.c
 

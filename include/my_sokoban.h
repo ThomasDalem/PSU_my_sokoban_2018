@@ -29,7 +29,7 @@ typedef struct map_s {
 } map_t;
 
 int my_strlen(char const *str);
-void run_game(map_t *map);
+int run_game(map_t *map);
 void load_map(char const *filepath, map_t *map);
 void check_inputs(int input, map_t *map, object_t *player);
 void free_map(map_t *map);
@@ -41,5 +41,6 @@ void change_player_pos(object_t *player, map_t *map, position_t dir);
 int move_boxes(object_t *player, map_t *map, position_t dir);
 int is_same_pos(position_t pos1, position_t pos2);
 int check_if_won(map_t *map);
+void display_goals(map_t *map, object_t *player);
 
 #endif
