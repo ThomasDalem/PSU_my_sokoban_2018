@@ -20,8 +20,10 @@ typedef struct object_s {
 
 typedef struct map_s {
     char **map;
-    object_t **objects;
-    int nb_objects;
+    object_t **boxes;
+    object_t **goals;
+    int nb_boxes;
+    int nb_goals;
     int size_x;
     int size_y;
 } map_t;
@@ -37,5 +39,7 @@ object_t *create_object(int type, position_t pos);
 object_t *create_player(map_t *map, int type);
 void change_player_pos(object_t *player, map_t *map, position_t dir);
 int move_boxes(object_t *player, map_t *map, position_t dir);
+int is_same_pos(position_t pos1, position_t pos2);
+int check_if_won(map_t *map);
 
 #endif

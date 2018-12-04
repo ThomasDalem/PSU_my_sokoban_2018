@@ -11,8 +11,10 @@
 int main (int ac, char **av)
 {
     map_t *map = malloc(sizeof(map_t));
-    map->nb_objects = 0;
-    map->objects = malloc(sizeof(object_t *) * 30);
+    map->nb_boxes = 0;
+    map->nb_goals = 0;
+    map->boxes = malloc(sizeof(object_t *) * 30);
+    map->goals = malloc(sizeof(object_t *) * 30);
 
     if (ac != 2) {
         write(1, "Invalid number of arguments\n", 28);

@@ -30,13 +30,13 @@ int move_boxes(object_t *player, map_t *map, position_t dir)
     box_pos.x = 0;
     box_pos.y = 0;
 
-    for (int i = 0; i < map->nb_objects; i++) {
-        box_pos.x = map->objects[i]->pos.x;
-        box_pos.y = map->objects[i]->pos.y;
+    for (int i = 0; i < map->nb_boxes; i++) {
+        box_pos.x = map->boxes[i]->pos.x;
+        box_pos.y = map->boxes[i]->pos.y;
         new_pos = map->map[box_pos.y + dir.y][box_pos.x + dir.x];
         if (is_same_pos(player_pos, box_pos) && can_move(new_pos)){
-            map->objects[i]->pos.x += dir.x;
-            map->objects[i]->pos.y += dir.y;
+            map->boxes[i]->pos.x += dir.x;
+            map->boxes[i]->pos.y += dir.y;
             map->map[box_pos.y + dir.y][box_pos.x + dir.x] = 'X';
         }
         else if (is_same_pos(player_pos, box_pos) && can_move(new_pos) != 1)

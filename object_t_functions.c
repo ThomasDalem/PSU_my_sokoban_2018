@@ -5,6 +5,8 @@
 ** Functions related to object_t functions
 */
 #include <stdlib.h>
+#include <curses.h>
+#include <ncurses.h>
 #include "my_sokoban.h"
 
 int search_line(char *line, int type)
@@ -16,8 +18,10 @@ int search_line(char *line, int type)
         char_to_search = 'P';
     if (type == 2)
         char_to_search = 'X';
-    if (type == 3)
+    if (type == 3) {
+        printw("OK");
         char_to_search = 'O';
+    }
     while (line[i] != '\0') {
         if (line[i] == char_to_search)
             return (i);

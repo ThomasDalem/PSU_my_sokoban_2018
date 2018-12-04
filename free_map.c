@@ -16,9 +16,7 @@ void free_map(map_t *map)
         free(map->map[i]);
         i++;
     }
-    //while (y < map->nb_objects) {
-    //    free(map->objects[y]);
-    //}
-    free(map->objects);
+    free(map->boxes);
+    free(map->goals);
     free(map);
 }
