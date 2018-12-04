@@ -23,6 +23,7 @@ int main (int ac, char **av)
     }
     load_map(av[1], map);
     has_won = run_game(map);
+    my_put_nbr(has_won);
     free_map(map);
     return (0);
 }

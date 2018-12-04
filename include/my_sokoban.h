@@ -14,7 +14,6 @@ typedef struct position_s {
 } position_t;
 
 typedef struct object_s {
-    int type;
     position_t pos;
 } object_t;
 
@@ -35,12 +34,19 @@ void check_inputs(int input, map_t *map, object_t *player);
 void free_map(map_t *map);
 void init_screen(void);
 void end_screen(void);
-object_t *create_object(int type, position_t pos);
-object_t *create_player(map_t *map, int type);
+object_t *create_object(position_t pos);
+object_t *create_player(map_t *map);
 void change_player_pos(object_t *player, map_t *map, position_t dir);
 int move_boxes(object_t *player, map_t *map, position_t dir);
 int is_same_pos(position_t pos1, position_t pos2);
 int check_if_won(map_t *map);
 void display_goals(map_t *map, object_t *player);
+int check_if_stuck(map_t *map);
+int can_move(char new_pos);
+int can_move_up(object_t *box, char **map);
+int can_move_down(object_t *box, char **map);
+int can_move_left(object_t *box, char **map);
+int can_move_right(object_t *box, char **map);
+void my_put_nbr(int nb);
 
 #endif

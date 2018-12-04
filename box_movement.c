@@ -27,8 +27,6 @@ int move_boxes(object_t *player, map_t *map, position_t dir)
     char new_pos;
     player_pos.x = player->pos.x + dir.x;
     player_pos.y = player->pos.y + dir.y;
-    box_pos.x = 0;
-    box_pos.y = 0;
 
     for (int i = 0; i < map->nb_boxes; i++) {
         box_pos.x = map->boxes[i]->pos.x;

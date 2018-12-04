@@ -26,7 +26,7 @@ int check_if_won(map_t *map)
     for (int i = 0; i < map->nb_goals; i++) {
         have_box = check_if_have_box(map, map->goals[i]);
         if (have_box == 0)
-            return (0);
+            return (1);
     }
-    return (1);
+    return (0);
 }

@@ -22,12 +22,12 @@ void get_object(map_t *map, char const *line, int line_nb)
     while (line[i] != '\0') {
         if (line[i] == 'X') {
             pos.x = i;
-            map->boxes[map->nb_boxes] = create_object(2, pos);
+            map->boxes[map->nb_boxes] = create_object(pos);
             map->nb_boxes++;
         }
         else if (line[i] == 'O') {
             pos.x = i;
-            map->goals[map->nb_goals] = create_object(3, pos);
+            map->goals[map->nb_goals] = create_object(pos);
             map->nb_goals++;
         }
         i++;

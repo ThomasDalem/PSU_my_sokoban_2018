@@ -16,6 +16,10 @@ SRC		=		main.c				\
 				box_movement.c		\
 				display_goals.c		\
 				check_if_won.c 		\
+				box_check_stuck.c	\
+				my_put_nbr.c		\
+				can_move.c			\
+				my_putchar.c 		\
 				map_loader.c
 
 NAME	=		my_sokokan

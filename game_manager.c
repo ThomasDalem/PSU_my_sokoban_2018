@@ -12,20 +12,21 @@
 int run_game(map_t *map)
 {
     int input = 0;
-    object_t *player = create_player(map, 1);
+    object_t *player = create_player(map);
     int pos_x = map->size_x;
     int pos_y = map->size_y;
-    int has_won = -1;
+    int has_won = 1;
+    int is_stuck = 0;
 
     init_screen();
-    while (input != ' ' && has_won != 1) {
-        for (int i = 0; i < map->size_y; i++)
+    while (input != ' ' && has_won != 0 && is_stuck == 0) {
+        for (int i = 0; i < pos_y; i++)
             mvprintw(LINES / 2 - pos_y / 2 + i, COLS / 2 - pos_y / 2, map->map[i]);
-        printw("O pos x = %d\n", map->goals[0]->pos.x);
-        printw("X pos x = %d", map->boxes[0]->pos.x);
         input = getch();
         check_inputs(input, map, player);
+        printw("Player x : %d\n Player y : %d", player->pos.x, player->pos.y);
         display_goals(map, player);
+        is_stuck = check_if_stuck(map);
         has_won = check_if_won(map);
         refresh();
     }
