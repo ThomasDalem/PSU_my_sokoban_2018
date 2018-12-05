@@ -22,7 +22,7 @@ SRC		=		main.c				\
 				my_putchar.c 		\
 				map_loader.c
 
-NAME	=		my_sokokan
+NAME	=		my_sokoban
 
 all: $(NAME)
 
