@@ -8,10 +8,6 @@
 
 int try_move(object_t *box, map_t *map)
 {
-    position_t dir;
-    position_t box_pos;
-    char new_pos_char;
-
     if (can_move_left(box, map->map) == 0 && can_move_up(box, map->map) == 0)
         return (0);
     if (can_move_left(box, map->map) == 0 && can_move_down(box, map->map) == 0)

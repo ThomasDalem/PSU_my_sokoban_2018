@@ -20,6 +20,9 @@ SRC		=		main.c				\
 				my_put_nbr.c		\
 				can_move.c			\
 				my_putchar.c 		\
+				get_sizes.c			\
+				check_malloc.c		\
+				check_args.c		\
 				map_loader.c
 
 NAME	=		my_sokoban
@@ -27,7 +30,7 @@ NAME	=		my_sokoban
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) -g -Iinclude -lncurses
+	gcc -o $(NAME) $(SRC) -Wall -Wextra -g -Iinclude -lncurses
 	rm -f $(OBJ)
 
 clean:

@@ -9,14 +9,14 @@
 
 void free_map(map_t *map)
 {
-    int i = 0;
-    int y = 0;
-
-    while (i < map->size_y) {
+    for (int i = 0; i < map->size_y; i++)
         free(map->map[i]);
-        i++;
-    }
+    for (int i = 0; i < map->nb_boxes; i++)
+        free(map->boxes[i]);
+    for (int i = 0; i < map->nb_goals; i++)
+        free(map->goals[i]);
     free(map->boxes);
     free(map->goals);
+    free(map->map);
     free(map);
 }

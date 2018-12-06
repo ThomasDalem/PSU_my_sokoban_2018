@@ -29,7 +29,7 @@ typedef struct map_s {
 
 int my_strlen(char const *str);
 int run_game(map_t *map, int *restart);
-void load_map(char const *filepath, map_t *map);
+char **load_map(char const *filepath, map_t *map);
 void check_inputs(int input, map_t *map, object_t *player, int *restart);
 void free_map(map_t *map);
 void init_screen(void);
@@ -48,5 +48,10 @@ int can_move_down(object_t *box, char **map);
 int can_move_left(object_t *box, char **map);
 int can_move_right(object_t *box, char **map);
 void my_put_nbr(int nb);
+int get_file_size(char const *filepath);
+int get_line_size(int start, char const *map);
+int get_nb_lines(char const *map);
+void check_malloc(void *ptr);
+void check_arguments(int ac);
 
 #endif

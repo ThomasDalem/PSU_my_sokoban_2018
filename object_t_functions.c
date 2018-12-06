@@ -9,12 +9,11 @@
 #include <ncurses.h>
 #include "my_sokoban.h"
 
-int search_line(char *line)
+int search_line(char const *line)
 {
     int i = 0;
-    char char_to_search;
 
-    while (line[i] != '\0') {
+    while (line[i] != '\n') {
         if (line[i] == 'P')
             return (i);
         i++;
@@ -26,11 +25,10 @@ object_t *create_player(map_t *map)
 {
     object_t *object;
     int i = 0;
-    int y = 0;
     int result = -1;
 
     object = malloc(sizeof(object_t));
-    while (result == -1) {
+    while (result == -1 && i < map->size_y) {
         result = search_line(map->map[i]);
         i++;
     }
@@ -43,8 +41,6 @@ object_t *create_player(map_t *map)
 object_t *create_object(position_t pos)
 {
     object_t *object;
-    int i = 0;
-    int y = 0;
 
     object = malloc(sizeof(object_t));
     object->pos.x = pos.x;

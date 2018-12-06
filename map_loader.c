@@ -34,26 +34,74 @@ void get_object(map_t *map, char const *line, int line_nb)
     }
 }
 
-void load_map(char const *filepath, map_t *map)
+int get_biggest_line_size(char const *map)
 {
-    FILE *f = fopen(filepath, "r");
-    char **char_map = NULL;
-    size_t size = 0;
-    ssize_t line_size = 0;
+    int biggest_line_size = 0;
+    int line_size = 0;
+    int i = 0;
 
-    if (f == NULL) {
-        write(1, "Cannot open the file\n", 21);
-        exit(84);
+    while (map[i] != '\0') {
+        if (map[i] == '\n' && line_size > biggest_line_size)
+            biggest_line_size = line_size;
+        if (map[i] == '\n')
+            line_size = 0;
+        line_size++;
+        i++;
     }
-    char_map = malloc(sizeof(char *) * 100);
-    if (map == NULL)
-        exit(84);
-    for (int i = 0; line_size != -1; i++) {
-        line_size = getline(&char_map[i], &size, f);
-        get_object(map, char_map[i], i);
-        map->size_y = i;
+    return (biggest_line_size);
+}
+
+char *load_map_1d(char const *filepath)
+{
+    char *map = NULL;
+    int file_size = 0;
+    int fd = 0;
+
+    file_size = get_file_size(filepath);
+    map = malloc(sizeof(char) * (file_size + 1));
+    check_malloc(map);
+    fd = open(filepath, O_RDONLY);
+    read(fd, map, file_size);
+    map[file_size] = '\0';
+    close(fd);
+    return (map);
+}
+
+char **load_map_2d(char const *map_1d, map_t *map)
+{
+    char **map_2d;
+    int x = 0;
+    int y = 0;
+
+    map->size_y = get_nb_lines(map_1d);
+    map->size_x = get_biggest_line_size(map_1d);
+    map_2d = malloc(sizeof(char *) * map->size_y);
+    check_malloc(map_2d);
+    for (int i = 0; i < map->size_y; i++) {
+        map_2d[i] = malloc(sizeof(char) * (map->size_x + 1));
+        check_malloc(map_2d[i]);
     }
-    map->size_x = my_strlen(char_map[1]);
-    fclose(f);
-    map->map = char_map;
+    for (int i = 0; map_1d[i] != '\0'; i++) {
+        map_2d[y][x] = map_1d[i];
+        x++;
+        if (map_1d[i] == '\n') {
+            map_2d[y][x] = '\0';
+            x = 0;
+            y++;
+        }
+    }
+    return (map_2d);
+}
+
+char **load_map(char const *filepath, map_t *map)
+{
+    char *map_1d = NULL;
+    char **map_2d = NULL;
+
+    map_1d = load_map_1d(filepath);
+    map_2d = load_map_2d(map_1d, map);
+    for (int i = 0; i < map->size_y; i++)
+        get_object(map, map_2d[i], i);
+    free(map_1d);
+    return (map_2d);
 }
