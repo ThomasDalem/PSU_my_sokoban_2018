@@ -64,14 +64,13 @@ char *load_map_1d(char const *filepath)
     read(fd, map, file_size);
     map[file_size] = '\0';
     close(fd);
+    check_map(map);
     return (map);
 }
 
 char **load_map_2d(char const *map_1d, map_t *map)
 {
     char **map_2d;
-    int x = 0;
-    int y = 0;
 
     map->size_y = get_nb_lines(map_1d);
     map->size_x = get_biggest_line_size(map_1d);
