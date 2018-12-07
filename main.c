@@ -27,7 +27,6 @@ int main (int ac, char **av)
         map->goals = malloc(sizeof(object_t *) * 30);
         map->map = load_map(av[1], map);
         has_won = run_game(map, &restart);
-        my_put_nbr(map->size_y);
         free_map(map);
         clear();
     }

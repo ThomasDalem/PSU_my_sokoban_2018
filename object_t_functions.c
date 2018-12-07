@@ -28,13 +28,13 @@ object_t *create_player(map_t *map)
     int result = -1;
 
     object = malloc(sizeof(object_t));
-    while (result == -1 && i < map->size_y) {
+    while (result == -1) {
         result = search_line(map->map[i]);
         i++;
     }
     i--;
-    object->pos.x = i;
-    object->pos.y = result;
+    object->pos.x = result;
+    object->pos.y = i;
     return (object);
 }
 

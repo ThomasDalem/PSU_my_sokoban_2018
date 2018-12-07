@@ -19,7 +19,7 @@ void get_object(map_t *map, char const *line, int line_nb)
 
     pos.x = 0;
     pos.y = line_nb;
-    while (line[i] != '\0') {
+    while (line[i] != '\0' && line[i] != '\n') {
         if (line[i] == 'X') {
             pos.x = i;
             map->boxes[map->nb_boxes] = create_object(pos);
@@ -90,6 +90,7 @@ char **load_map_2d(char const *map_1d, map_t *map)
             y++;
         }
     }
+    map_2d[y][x] = '\0';
     return (map_2d);
 }
 

@@ -37,6 +37,7 @@ int get_nb_lines(char const *map)
             nb_lines++;
         i++;
     }
+    nb_lines++;
     return (nb_lines);
 }
 
