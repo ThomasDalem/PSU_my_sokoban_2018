@@ -23,6 +23,7 @@ SRC		=		main.c				\
 				get_sizes.c			\
 				check_malloc.c		\
 				check_args.c		\
+				map1d_to_map2d.c	\
 				map_loader.c
 
 NAME	=		my_sokoban

@@ -53,5 +53,6 @@ int get_line_size(int start, char const *map);
 int get_nb_lines(char const *map);
 void check_malloc(void *ptr);
 void check_arguments(int ac);
+void put_map1d_in_map2d(char const *map1d, char **map2d);
 
 #endif

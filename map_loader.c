@@ -81,16 +81,7 @@ char **load_map_2d(char const *map_1d, map_t *map)
         map_2d[i] = malloc(sizeof(char) * (map->size_x + 1));
         check_malloc(map_2d[i]);
     }
-    for (int i = 0; map_1d[i] != '\0'; i++) {
-        map_2d[y][x] = map_1d[i];
-        x++;
-        if (map_1d[i] == '\n') {
-            map_2d[y][x] = '\0';
-            x = 0;
-            y++;
-        }
-    }
-    map_2d[y][x] = '\0';
+    put_map1d_in_map2d(map_1d, map_2d);
     return (map_2d);
 }
 
