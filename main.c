@@ -16,7 +16,7 @@ int main (int ac, char **av)
     int has_won = 0;
     int restart = 1;
 
-    check_arguments(ac);
+    check_arguments(ac, av);
     init_screen();
     while (restart == 1) {
         restart = 0;
