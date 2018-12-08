@@ -38,7 +38,7 @@ int move_boxes(object_t *player, map_t *map, position_t dir)
             map->map[box_pos.y + dir.y][box_pos.x + dir.x] = 'X';
         }
         else if (is_same_pos(player_pos, box_pos) && can_move(new_pos) != 1)
-            return(-1);
+            return (-1);
     }
     return (1);
 }

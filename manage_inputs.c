@@ -17,13 +17,13 @@ void move_vertical(map_t *map, object_t *player, int input)
         dir.x = 0;
         dir.y = -1;
         if (move_boxes(player, map, dir) != -1)
-        change_player_pos(player, map, dir);
+            change_player_pos(player, map, dir);
     }
     if (input == KEY_DOWN) {
         dir.x = 0;
         dir.y = 1;
         if (move_boxes(player, map, dir) != -1)
-        change_player_pos(player, map, dir);
+            change_player_pos(player, map, dir);
     }
 }
 
@@ -35,13 +35,13 @@ void move_horizontal(map_t *map, object_t *player, int input)
         dir.x = -1;
         dir.y = 0;
         if (move_boxes(player, map, dir) != -1)
-        change_player_pos(player, map, dir);
+            change_player_pos(player, map, dir);
     }
     if (input == KEY_RIGHT) {
         dir.x = 1;
         dir.y = 0;
         if (move_boxes(player, map, dir) != -1)
-        change_player_pos(player, map, dir);
+            change_player_pos(player, map, dir);
     }
 }
 
