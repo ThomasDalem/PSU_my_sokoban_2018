@@ -41,3 +41,16 @@ Test(sokoban, get_player_pos)
         free(map->map[i]);
     free(map);
 }
+
+Test(sokoban, get_biggest_line_size)
+{
+    char map1d[44] = "#######\n#   P #\n#  X  #\n#   O #\n##########\n";
+    char **map2d = NULL;
+    map_t *map = malloc(sizeof(map_t));
+
+    map->map = load_map_2d(map1d, map);
+    cr_assert_eq(get_biggest_line_size(map1d), 11);
+    for (int i = 0; i < 5; i++)
+        free(map->map[i]);
+    free(map);
+}
