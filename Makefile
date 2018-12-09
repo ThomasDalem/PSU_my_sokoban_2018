@@ -5,8 +5,7 @@
 ## Makefile
 ##
 
-SRC		=		main.c				\
-				game_manager.c		\
+SRC		=		game_manager.c		\
 				manage_inputs.c		\
 				free_map.c			\
 				screen_functions.c	\
@@ -27,12 +26,15 @@ SRC		=		main.c				\
 				map_loader.c		\
 				check_map.c
 
+TESTS_SRC	=	tests/map_loading_tests.c	\
+				tests/sizes_tests.c
+
 NAME	=		my_sokoban
 
 all: $(NAME)
 
 $(NAME):
-	gcc -o $(NAME) $(SRC) -Wall -Wextra -g -Iinclude -lncurses
+	gcc -o $(NAME) main.c $(SRC) -Wall -Wextra -g -Iinclude -lncurses
 	rm -f $(OBJ)
 
 clean:
@@ -42,3 +44,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+tests_run:
+	gcc -o unit_tests $(TESTS_SRC) $(SRC) --coverage -Iinclude -lncurses -lcriterion
+	./unit_tests

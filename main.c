@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include "my_sokoban.h"
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
     map_t *map;
     int has_won = 0;

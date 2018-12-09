@@ -55,5 +55,6 @@ void check_malloc(void *ptr);
 void check_arguments(int ac, char **av);
 void put_map1d_in_map2d(char const *map1d, char **map2d);
 void check_map(char *map);
+char **load_map_2d(char const *map_1d, map_t *map);
 
 #endif
